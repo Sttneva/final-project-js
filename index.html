@@ -7,15 +7,17 @@
 
         var positions = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'];
 
+        // Получение имен от пользователя
         function getNames() {
-            var names = []; // Для хранения имен
+            var names = [];
             for (var i = 0; i < positions.length; i++) {
-                var name = prompt(`Введите имя для ${positions[i]}`); // Мы используем prompt для получения имени от пользователя
+                var name = prompt(`Введите имя для ${positions[i]}`);
                 names.push(name);
             }
             return names;
         }
 
+        // Создание объектов-сотрудников
         function createTeam(names) {
             var team = [];
             for (var i = 0; i < names.length; i++) {
@@ -27,7 +29,7 @@
             }
             return team;
         }
-
+        // Расчет зарплаты
         function setSalary(team) {
             for (var i = 0; i < team.length; i++) {
                 var salary;
@@ -68,9 +70,16 @@
 
         // Показываем команду
         showTeam(team);
+        console.log("------------------------------")
 
-        // Можно также вызывать метод tellAboutYourSelf() для каждого члена команды, например:
+        // Вызываем метод tellAboutYourSelf() для каждого члена команды
         console.log(team[0].tellAboutYourSelf());
+        console.log(team[1].tellAboutYourSelf());
+        console.log(team[2].tellAboutYourSelf());
+        console.log(team[3].tellAboutYourSelf());
+        console.log(team[4].tellAboutYourSelf());
+        console.log(team[5].tellAboutYourSelf());
+        console.log(team[6].tellAboutYourSelf());
 
 
     </script>
