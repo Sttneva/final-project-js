@@ -5,6 +5,74 @@
     <title>Title</title>
     <script>
 
+        var positions = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'];
+
+        function getNames() {
+            var names = []; // Для хранения имен
+            for (var i = 0; i < positions.length; i++) {
+                var name = prompt(`Введите имя для ${positions[i]}`); // Мы используем prompt для получения имени от пользователя
+                names.push(name);
+            }
+            return names;
+        }
+
+        function createTeam(names) {
+            var team = [];
+            for (var i = 0; i < names.length; i++) {
+                var member = {
+                    name: names[i],
+                    position: positions[i]
+                };
+                team.push(member);
+            }
+            return team;
+        }
+
+        function setSalary(team) {
+            for (var i = 0; i < team.length; i++) {
+                var salary;
+                var member = team[i];
+                if (member.position.indexOf('Junior') !== -1) {
+                    salary = Math.floor(Math.random() * (1000 - 500)) + 500;
+                } else if (member.position.indexOf('Middle') !== -1) {
+                    salary = Math.floor(Math.random() * (2000 - 1500)) + 1500;
+                } else if (member.position.indexOf('Senior') !== -1) {
+                    salary = Math.floor(Math.random() * (3000 - 2500)) + 2500;
+                } else {
+                    salary = Math.floor(Math.random() * (4500 - 4000)) + 4000;
+                }
+                member.salary = salary;
+            }
+        }
+
+        function tellAboutYourSelf() {
+            return `Меня зовут ${this.name} и я - ${this.position}. Я зарабатываю ${this.salary}$.`;
+        }
+
+        function showTeam(team) {
+            for (var i = 0; i < team.length; i++) {
+                var member = team[i];
+                console.log(`${member.name} - ${member.position}. Зарплата - ${member.salary}$.`);
+            }
+        }
+
+        // Создаем команду
+        var names = getNames();
+        var team = createTeam(names);
+        setSalary(team);
+
+        // Добавляем методы каждому члену команды
+        for (var i = 0; i < team.length; i++) {
+            team[i].tellAboutYourSelf = tellAboutYourSelf;
+        }
+
+        // Показываем команду
+        showTeam(team);
+
+        // Можно также вызывать метод tellAboutYourSelf() для каждого члена команды, например:
+        console.log(team[0].tellAboutYourSelf());
+
+
     </script>
 </head>
 <body>
